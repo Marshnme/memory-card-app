@@ -6,6 +6,8 @@ import './App.css';
 
 function App() {
 	const [instructionsToggle, setInstructionsToggle] = useState(false);
+	const [currentScore, setCurrentScore] = useState(0);
+	const [highScore, setHighScore] = useState(0);
 
 	function toggleInstructions() {
 		instructionsToggle
@@ -17,7 +19,10 @@ function App() {
 		<div className="App">
 			<header className="header">
 				<h1>Remember</h1>
-				<PlayerScore></PlayerScore>
+				<PlayerScore
+					currentScore={currentScore}
+					highScore={highScore}
+				></PlayerScore>
 			</header>
 			<main className="main">
 				<div className="instruction-container">

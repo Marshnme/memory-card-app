@@ -10,10 +10,14 @@
   display:flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  padding:0 2.5rem;
-
+  padding:1rem 2.5rem;
 
   background-color: rgb(80, 228, 159);
+}
+
+.header h1{
+  margin: 0;
+  font-size: 2.5rem;
 }
 
 .main{
@@ -32,11 +36,12 @@
 }
 
 .instructions-button-toggle{
-  /* margin: 0 2.5rem 0 0; */
+  
 }
 
 .footer{
   display:flex;
   flex-flow: column nowrap;
+  background-color: rgb(80, 228, 159);
 }
 

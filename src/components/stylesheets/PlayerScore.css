@@ -1,0 +1,7 @@
+.score-counter{
+    margin: 0;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

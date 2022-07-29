@@ -1,8 +1,8 @@
+import './stylesheets/PlayerScore.css'
 
 
-
-const PlayerScore = () => {
-    return <h1>playerScore</h1>
+const PlayerScore = (props) => {
+    return <p className="score-counter">Score {props.currentScore} | {props.highScore} High Score</p>
 }
 
 export default PlayerScore
