@@ -1,17 +1,20 @@
+html,body{
+  min-height: 100vh;
+}
 .App {
-  height:100vh;
+  /* min-height:100vh; */
   text-align: center;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-between;
 }
 
 .header{
   display:flex;
   flex-flow: row nowrap;
+  align-items: center;
   justify-content: space-between;
-  padding:1rem 2.5rem;
-
+  padding:0rem 2.5rem;
+  min-height:10vh;
   background-color: rgb(80, 228, 159);
 }
 
@@ -21,17 +24,16 @@
 }
 
 .main{
-  height:100%;
+  min-height: 80vh;
   display:flex;
   flex-flow: column nowrap;
-  padding-top:2rem;
 
   background-color:green;
 }
 
 .instruction-container{
   align-self: flex-end;
-  margin:0 2.5rem 0 0;
+  margin:2rem 2.5rem 0 0;
   width:12rem;
 }
 
@@ -42,6 +44,8 @@
 .footer{
   display:flex;
   flex-flow: column nowrap;
+  justify-content: center;
+  min-height: 10vh;
   background-color: rgb(80, 228, 159);
 }
 

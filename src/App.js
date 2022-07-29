@@ -8,11 +8,89 @@ function App() {
 	const [instructionsToggle, setInstructionsToggle] = useState(false);
 	const [currentScore, setCurrentScore] = useState(0);
 	const [highScore, setHighScore] = useState(0);
+	const [currentLevel, setCurrentLevel] = useState(0);
+	const [allGameCards, setAllGameCards] = useState([]);
+	const [currentLevelGameCards, setCurrentLevelGameCards] = useState([]);
+
+	useEffect(() => {
+		getGameCards();
+	}, []);
+
+	useEffect(() => {
+		console.log('HELLLO');
+		console.log(currentLevel);
+		setCurrentLevelGameCards([]);
+		setLevelGameCards(currentLevel);
+	}, [setCurrentLevel, currentLevel]);
+
+	const getGameCards = async () => {
+		const res = await fetch(
+			'https://valorant-api.com/v1/agents?isPlayableCharacter=true'
+		);
+		const data = await res.json();
+		console.log(data.data);
+		setAllGameCards(data.data);
+		setCurrentLevel(1);
+	};
+
+	function setLevelGameCards(level) {
+		for (let i = 0; i < allGameCards.length; i++) {
+			if (level === 1) {
+				if (i < 3) {
+					setCurrentLevelGameCards((prevState) => [
+						...prevState,
+						allGameCards[i],
+					]);
+				}
+			} else if (level === 2) {
+				if (i < 5) {
+					setCurrentLevelGameCards((prevState) => [
+						...prevState,
+						allGameCards[i],
+					]);
+				}
+			} else if (level === 3) {
+				if (i < 10) {
+					setCurrentLevelGameCards((prevState) => [
+						...prevState,
+						allGameCards[i],
+					]);
+				}
+			} else if (level === 4) {
+				if (i < 15) {
+					setCurrentLevelGameCards((prevState) => [
+						...prevState,
+						allGameCards[i],
+					]);
+				}
+			} else if (level === 5) {
+				if (i < 19) {
+					setCurrentLevelGameCards((prevState) => [
+						...prevState,
+						allGameCards[i],
+					]);
+				}
+			}
+		}
+	}
 
 	function toggleInstructions() {
 		instructionsToggle
 			? setInstructionsToggle(false)
 			: setInstructionsToggle(true);
+	}
+
+	function nextLevel() {
+		if (currentLevel === 5) {
+			return;
+		}
+		setCurrentLevel(currentLevel + 1);
+	}
+	function previousLevel() {
+		if (currentLevel === 1) {
+			return;
+		}
+		setCurrentLevel(currentLevel - 1);
 	}
 
 	return (
@@ -35,8 +113,10 @@ function App() {
 					{/* set instructions to position absolute */}
 					{instructionsToggle ? <Instructions></Instructions> : null}
 				</div>
-
-				<CardDisplay></CardDisplay>
+				<p>Level - {currentLevel}</p>
+				<button onClick={previousLevel}>previous level</button>
+				<button onClick={nextLevel}>next level</button>
+				<CardDisplay cards={currentLevelGameCards}></CardDisplay>
 			</main>
 			<footer className="footer">
 				<p>Created by Joshua Holtsclaw for The Odin Project</p>
