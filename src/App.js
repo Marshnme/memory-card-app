@@ -17,14 +17,13 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		console.log('HELLLO');
-		console.log(currentLevel);
 		setCurrentLevelGameCards([]);
 		setPickedCards([]);
 		setLevelGameCards(currentLevel);
 	}, [setCurrentLevel, currentLevel]);
 
 	useEffect(() => {
+		console.log(pickedCards);
 		checkWin();
 	}, [pickedCards]);
 
@@ -97,18 +96,20 @@ function App() {
 	function pickCard(e) {
 		let cardID = e.target.classList[0];
 
+		let newOrder = [...currentLevelGameCards];
+
 		if (pickedCards.includes(cardID)) {
-			console.log('resetGame');
+			if (currentLevel === 1) {
+				setPickedCards([]);
+				shuffleCardOrder(newOrder);
+				setCurrentLevelGameCards(newOrder);
+			}
 			setCurrentLevel(1);
 			return;
 		} else {
 			setPickedCards([...pickedCards, e.target.classList[0]]);
-			console.log(pickedCards);
 		}
 
-		checkWin();
-
-		let newOrder = [...currentLevelGameCards];
 		shuffleCardOrder(newOrder);
 		setCurrentLevelGameCards(newOrder);
 	}
