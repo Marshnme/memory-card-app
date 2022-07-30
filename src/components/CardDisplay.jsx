@@ -2,13 +2,16 @@
 import './stylesheets/CardDisplay.css'
 
 const CardDisplay = (props) => {
-    let {cards} = props
+    let { cards,pickCard } = props
+    
+
+
     return (
         cards.map((card) => {
             return (
-                <div key={card.uuid} className="agent-card">
-                    <img src={card.displayIcon} alt='Agent Icon' className='agent-pic'></img>
-                    <p>{card.displayName }</p>
+                <div key={card.uuid} className={`${card.uuid} agent-card` }onClick={pickCard}>
+                    <img src={card.displayIcon} alt='Agent Icon' className={`${card.uuid} agent-pic`}></img>
+                    <p className={card.uuid}>{card.displayName }</p>
                 </div>
             )
         })

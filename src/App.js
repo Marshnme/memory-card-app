@@ -11,7 +11,7 @@ function App() {
 	const [currentLevel, setCurrentLevel] = useState(0);
 	const [allGameCards, setAllGameCards] = useState([]);
 	const [currentLevelGameCards, setCurrentLevelGameCards] = useState([]);
-
+	const [pickedCards, setPickedCards] = useState([]);
 	useEffect(() => {
 		getGameCards();
 	}, []);
@@ -20,8 +20,13 @@ function App() {
 		console.log('HELLLO');
 		console.log(currentLevel);
 		setCurrentLevelGameCards([]);
+		setPickedCards([]);
 		setLevelGameCards(currentLevel);
 	}, [setCurrentLevel, currentLevel]);
+
+	useEffect(() => {
+		checkWin();
+	}, [pickedCards]);
 
 	const getGameCards = async () => {
 		const res = await fetch(
@@ -80,6 +85,41 @@ function App() {
 			: setInstructionsToggle(true);
 	}
 
+	function shuffleCardOrder(newOrder) {
+		newOrder.reverse().forEach((item, index) => {
+			const j = Math.floor(Math.random() * (index + 1));
+			[newOrder[index], newOrder[j]] = [newOrder[j], newOrder[index]];
+		});
+
+		return newOrder;
+	}
+
+	function pickCard(e) {
+		let cardID = e.target.classList[0];
+
+		if (pickedCards.includes(cardID)) {
+			console.log('resetGame');
+			setCurrentLevel(1);
+			return;
+		} else {
+			setPickedCards([...pickedCards, e.target.classList[0]]);
+			console.log(pickedCards);
+		}
+
+		checkWin();
+
+		let newOrder = [...currentLevelGameCards];
+		shuffleCardOrder(newOrder);
+		setCurrentLevelGameCards(newOrder);
+	}
+
+	function checkWin() {
+		if (pickedCards.length === currentLevelGameCards.length) {
+			console.log('uwin');
+			nextLevel();
+		}
+	}
+
 	function nextLevel() {
 		if (currentLevel === 5) {
 			return;
@@ -115,7 +155,10 @@ function App() {
 				</div>
 				<p>Level - {currentLevel}</p>
 				<div className="card-display-holder">
-					<CardDisplay cards={currentLevelGameCards}></CardDisplay>
+					<CardDisplay
+						cards={currentLevelGameCards}
+						pickCard={pickCard}
+					></CardDisplay>
 				</div>
 				<div className="level-buttons">
 					<button onClick={previousLevel}>previous level</button>
