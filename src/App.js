@@ -116,7 +116,9 @@ function App() {
 				<p>Level - {currentLevel}</p>
 				<button onClick={previousLevel}>previous level</button>
 				<button onClick={nextLevel}>next level</button>
-				<CardDisplay cards={currentLevelGameCards}></CardDisplay>
+				<div className="card-display-holder">
+					<CardDisplay cards={currentLevelGameCards}></CardDisplay>
+				</div>
 			</main>
 			<footer className="footer">
 				<p>Created by Joshua Holtsclaw for The Odin Project</p>

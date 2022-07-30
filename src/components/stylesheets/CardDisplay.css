@@ -1,0 +1,11 @@
+.agent-card{
+    cursor: pointer;
+    border:1px solid black;
+    border-radius: 15px;
+    padding: .5rem .5rem 0 .5rem;
+    align-self: center;
+}
+
+.agent-pic{
+    width: 100%;
+}

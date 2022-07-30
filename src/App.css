@@ -27,7 +27,7 @@ html,body{
   min-height: 80vh;
   display:flex;
   flex-flow: column nowrap;
-
+  align-items: center;
   background-color:green;
 }
 
@@ -38,6 +38,16 @@ html,body{
 }
 
 .instructions-button-toggle{
+  
+}
+
+.card-display-holder{
+  width:100%;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(150px, 200px));
+  justify-content: center;
+  gap: 1.5rem;
+  margin:1.5rem 0;
   
 }
 
