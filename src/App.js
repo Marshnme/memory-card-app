@@ -12,6 +12,7 @@ function App() {
 	const [allGameCards, setAllGameCards] = useState([]);
 	const [currentLevelGameCards, setCurrentLevelGameCards] = useState([]);
 	const [pickedCards, setPickedCards] = useState([]);
+
 	useEffect(() => {
 		getGameCards();
 	}, []);
@@ -23,7 +24,6 @@ function App() {
 	}, [setCurrentLevel, currentLevel]);
 
 	useEffect(() => {
-		console.log(pickedCards);
 		checkWin();
 	}, [pickedCards]);
 
@@ -115,6 +115,9 @@ function App() {
 	}
 
 	function checkWin() {
+		if (currentLevelGameCards.length === 0) {
+			return;
+		}
 		if (pickedCards.length === currentLevelGameCards.length) {
 			console.log('uwin');
 			nextLevel();
