@@ -51,6 +51,12 @@ html,body{
   
 }
 
+.level-buttons{
+  display:flex;
+  column-gap: 1.5rem;
+  margin-bottom:1.5rem;
+}
+
 .footer{
   display:flex;
   flex-flow: column nowrap;

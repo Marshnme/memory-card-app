@@ -114,10 +114,12 @@ function App() {
 					{instructionsToggle ? <Instructions></Instructions> : null}
 				</div>
 				<p>Level - {currentLevel}</p>
-				<button onClick={previousLevel}>previous level</button>
-				<button onClick={nextLevel}>next level</button>
 				<div className="card-display-holder">
 					<CardDisplay cards={currentLevelGameCards}></CardDisplay>
+				</div>
+				<div className="level-buttons">
+					<button onClick={previousLevel}>previous level</button>
+					<button onClick={nextLevel}>next level</button>
 				</div>
 			</main>
 			<footer className="footer">
