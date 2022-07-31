@@ -99,14 +99,20 @@ function App() {
 		let newOrder = [...currentLevelGameCards];
 
 		if (pickedCards.includes(cardID)) {
+			if (currentScore > highScore) {
+				setHighScore(currentScore);
+			}
 			if (currentLevel === 1) {
 				setPickedCards([]);
+				setCurrentScore(0);
 				shuffleCardOrder(newOrder);
 				setCurrentLevelGameCards(newOrder);
 			}
+			setCurrentScore(0);
 			setCurrentLevel(1);
 			return;
 		} else {
+			setCurrentScore(currentScore + 1);
 			setPickedCards([...pickedCards, e.target.classList[0]]);
 		}
 
