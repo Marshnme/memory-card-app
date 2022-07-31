@@ -21,7 +21,6 @@ function App() {
 		setCurrentLevelGameCards([]);
 		setPickedCards([]);
 		setLevelGameCards(currentLevel);
-		console.log(currentLevelGameCards);
 	}, [setCurrentLevel, currentLevel]);
 
 	useEffect(() => {
