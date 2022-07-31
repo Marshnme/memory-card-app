@@ -21,6 +21,7 @@ function App() {
 		setCurrentLevelGameCards([]);
 		setPickedCards([]);
 		setLevelGameCards(currentLevel);
+		console.log(currentLevelGameCards);
 	}, [setCurrentLevel, currentLevel]);
 
 	useEffect(() => {
@@ -33,7 +34,9 @@ function App() {
 		);
 		const data = await res.json();
 		console.log(data.data);
-		setAllGameCards(data.data);
+		let newOrder = [...data.data];
+		shuffleCardOrder(newOrder);
+		setAllGameCards(newOrder);
 		setCurrentLevel(1);
 	};
 
