@@ -35,10 +35,23 @@ html,body{
   align-self: flex-end;
   margin:2rem 2.5rem 0 0;
   width:12rem;
+  position:absolute
 }
 
 .instructions-button-toggle{
   
+}
+
+.button-style{
+  padding:1rem 1rem;
+  background-color: #8dbe9b;
+  cursor: pointer;
+  border:0px;
+  border-radius: 15px;
+}
+
+.level-counter{
+  margin-top:2rem;
 }
 
 .card-display-holder{
@@ -47,7 +60,7 @@ html,body{
   grid-template-columns:repeat(auto-fit, minmax(150px, 200px));
   justify-content: center;
   gap: 1.5rem;
-  margin:1.5rem 0;
+  margin:4rem 0;
   
 }
 

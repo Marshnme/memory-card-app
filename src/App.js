@@ -33,9 +33,10 @@ function App() {
 		);
 		const data = await res.json();
 		console.log(data.data);
-		let newOrder = [...data.data];
-		shuffleCardOrder(newOrder);
-		setAllGameCards(newOrder);
+		// let newOrder = [...data.data];
+		// shuffleCardOrder(newOrder);
+		// setAllGameCards(newOrder);
+		setAllGameCards(data.data);
 		setCurrentLevel(1);
 	};
 
@@ -157,7 +158,7 @@ function App() {
 			<main className="main">
 				<div className="instruction-container">
 					<button
-						className="instructions-button-toggle"
+						className="instructions-button-toggle button-style"
 						onClick={toggleInstructions}
 					>
 						Instructions
@@ -165,7 +166,7 @@ function App() {
 					{/* set instructions to position absolute */}
 					{instructionsToggle ? <Instructions></Instructions> : null}
 				</div>
-				<p>Level - {currentLevel}</p>
+				<p className="level-counter">Level - {currentLevel}</p>
 				<div className="card-display-holder">
 					<CardDisplay
 						cards={currentLevelGameCards}
@@ -173,8 +174,12 @@ function App() {
 					></CardDisplay>
 				</div>
 				<div className="level-buttons">
-					<button onClick={previousLevel}>previous level</button>
-					<button onClick={nextLevel}>next level</button>
+					<button className="button-style" onClick={previousLevel}>
+						Previous Level
+					</button>
+					<button className="button-style" onClick={nextLevel}>
+						Next Level
+					</button>
 				</div>
 			</main>
 			<footer className="footer">
