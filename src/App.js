@@ -34,10 +34,10 @@ function App() {
 		);
 		const data = await res.json();
 		console.log(data.data);
-		// let newOrder = [...data.data];
-		// shuffleCardOrder(newOrder);
-		// setAllGameCards(newOrder);
-		setAllGameCards(data.data);
+		let newOrder = [...data.data];
+		shuffleCardOrder(newOrder);
+		setAllGameCards(newOrder);
+		setAllGameCards(newOrder);
 		setCurrentLevel(1);
 	};
 
@@ -120,7 +120,7 @@ function App() {
 			setPickedCards([...pickedCards, e.target.classList[0]]);
 		}
 
-		shuffleCardOrder(newOrder);
+		// shuffleCardOrder(newOrder);
 		setCurrentLevelGameCards(newOrder);
 	}
 
@@ -139,6 +139,7 @@ function App() {
 			return;
 		}
 		setCurrentLevel(currentLevel + 1);
+		// try to randomize card order here
 	}
 	function previousLevel() {
 		if (currentLevel === 1) {
