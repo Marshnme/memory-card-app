@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import PlayerScore from './components/PlayerScore';
 import Instructions from './components/Instructions';
 import CardDisplay from './components/CardDisplay';
+import WinScreen from './components/WinScreen';
 import './App.css';
 
 function App() {
@@ -127,8 +128,8 @@ function App() {
 		if (currentLevelGameCards.length === 0) {
 			return;
 		}
+
 		if (pickedCards.length === currentLevelGameCards.length) {
-			console.log('uwin');
 			nextLevel();
 		}
 	}
@@ -156,31 +157,46 @@ function App() {
 				></PlayerScore>
 			</header>
 			<main className="main">
-				<div className="instruction-container">
-					<button
-						className="instructions-button-toggle button-style"
-						onClick={toggleInstructions}
-					>
-						Instructions
-					</button>
-					{/* set instructions to position absolute */}
-					{instructionsToggle ? <Instructions></Instructions> : null}
-				</div>
-				<p className="level-counter">Level - {currentLevel}</p>
-				<div className="card-display-holder">
-					<CardDisplay
-						cards={currentLevelGameCards}
-						pickCard={pickCard}
-					></CardDisplay>
-				</div>
-				<div className="level-buttons">
-					<button className="button-style" onClick={previousLevel}>
-						Previous Level
-					</button>
-					<button className="button-style" onClick={nextLevel}>
-						Next Level
-					</button>
-				</div>
+				{currentLevel === 5 &&
+				pickedCards.length === currentLevelGameCards.length ? (
+					<WinScreen setCurrentLevel={setCurrentLevel}></WinScreen>
+				) : (
+					<>
+						<div className="instruction-container">
+							<button
+								className="instructions-button-toggle button-style"
+								onClick={toggleInstructions}
+							>
+								Instructions
+							</button>
+							{/* set instructions to position absolute */}
+							{instructionsToggle ? (
+								<Instructions></Instructions>
+							) : null}
+						</div>
+						<p className="level-counter">Level - {currentLevel}</p>
+						<div className="card-display-holder">
+							<CardDisplay
+								cards={currentLevelGameCards}
+								pickCard={pickCard}
+							></CardDisplay>
+						</div>
+						<div className="level-buttons">
+							<button
+								className="button-style"
+								onClick={previousLevel}
+							>
+								Previous Level
+							</button>
+							<button
+								className="button-style"
+								onClick={nextLevel}
+							>
+								Next Level
+							</button>
+						</div>
+					</>
+				)}
 			</main>
 			<footer className="footer">
 				<p>Created by Joshua Holtsclaw for The Odin Project</p>
