@@ -33,15 +33,16 @@ function App() {
 			'https://valorant-api.com/v1/agents?isPlayableCharacter=true'
 		);
 		const data = await res.json();
-		console.log(data.data);
 		let newOrder = [...data.data];
 		shuffleCardOrder(newOrder);
-		setAllGameCards(newOrder);
 		setAllGameCards(newOrder);
 		setCurrentLevel(1);
 	};
 
 	function setLevelGameCards(level) {
+		let newOrder = [...allGameCards];
+		shuffleCardOrder(newOrder);
+		setAllGameCards(newOrder);
 		for (let i = 0; i < allGameCards.length; i++) {
 			if (level === 1) {
 				if (i < 3) {
