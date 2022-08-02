@@ -121,7 +121,7 @@ function App() {
 			setPickedCards([...pickedCards, e.target.classList[0]]);
 		}
 
-		// shuffleCardOrder(newOrder);
+		shuffleCardOrder(newOrder);
 		setCurrentLevelGameCards(newOrder);
 	}
 
